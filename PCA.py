@@ -195,7 +195,7 @@ if upload_files is not None:
             st.download_button(label="Download full data as CSV",data=csv,file_name='pca_applied_dataset.csv',mime='text/csv')
     
 
-tab1, tab2 = st.tabs(["Data Preprocessing Flow Chart", "PCA Procedure Flow Chart"])
+tab1, tab2, tab3 = st.tabs(["Data Preprocessing Flow Chart", "PCA Procedure Flow Chart", 'Business Usages'])
 
 with tab1:
    st.header('PCA Procedure Flow Chart')
@@ -204,3 +204,22 @@ with tab1:
 with tab2:
     st.header('Data Preprocessing Flow Chart')
     st.graphviz_chart(data_preprocessing_dot)
+    
+with tab3:
+    st.header('Business Usages of PCA')
+    # Define the business usages of PCA with their descriptions
+    business_usages = {
+        "**Data Reduction and Simplification**": "PCA is often used to reduce the dimensionality of large data sets, transforming the original data into a new set of variables (principal components) that are uncorrelated and maximize variance. This simplifies data exploration and visualization.",
+        "**Risk Management**": "In finance, PCA can analyze risk factors in investment portfolios, identifying the main factors explaining portfolio returns' variance.",
+        "**Quality Control**": "Manufacturing uses PCA to monitor product quality by identifying key variables influencing product quality and detecting deviations from normal production patterns.",
+        "**Market Research and Consumer Analysis**": "PCA analyzes survey data to identify consumer behavior patterns, helping segment the market and target customer groups more effectively.",
+        "**Feature Extraction in Machine Learning**": "In machine learning, PCA extracts features by reducing the number of correlated features in a dataset, simplifying models and improving performance.",
+        "**Anomaly Detection**": "PCA detects data anomalies by identifying instances with significant deviations from principal components, useful for fraud detection and issue identification.",
+        "**Pattern Recognition and Trend Analysis**": "PCA uncovers patterns and trends in data, beneficial for sales forecasting, operational performance analysis, and customer behavior analysis.",
+        "**Optimizing Marketing Campaigns**": "Businesses use PCA to identify key factors influencing customer decisions, optimizing marketing campaigns for maximum effectiveness.",
+        "**Finance and Investment**": "In finance, PCA finds patterns in historical prices and optimizes portfolios by identifying correlated assets and movement patterns.",
+        "**Supply Chain Management**": "PCA is used for analyzing and optimizing supply chain aspects like inventory levels, logistics, and distribution patterns."
+    }
+    for usage, description in business_usages.items():
+        with st.expander(usage):
+            st.write(description)
