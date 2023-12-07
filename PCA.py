@@ -161,7 +161,7 @@ if upload_files is not None:
     columns = df.columns
     str_columns = df.select_dtypes(include='O').columns
     if len(str_columns) != 0:
-        st.info('You have some Object type columns, please encode them to number')
+        st.sidebar.info('🤖 You have some Object type columns, please encode them to number and try again!')
     else:
         df = pre_processing_func(df=df)
         # create a form to get pca parameters from users
@@ -172,7 +172,7 @@ if upload_files is not None:
             if pca_components >= 1:
                 pca_components = int(pca_components)
             elif pca_components == 0:
-                st.sidebar.warning('you can not set it to 0')
+                st.sidebar.warning('🤖 You can not set the input to 0')
                 st.stop()
             pca = PCA(n_components=pca_components)
             transform_df = pca.fit_transform(df)
