@@ -157,7 +157,6 @@ st.warning('🤖 Keep in minds that if you have **not a number** columns you hav
 upload_files = st.sidebar.file_uploader(label='Upload your own data', help='You can upload your dataset here', type=['csv'])
 if upload_files is not None:
     df = pd.read_csv(upload_files)
-    df = df.select_dtypes(exclude='O') # this is for test i have to remove it late
     # preprocessing dataset
     columns = df.columns
     str_columns = df.select_dtypes(include='O').columns
